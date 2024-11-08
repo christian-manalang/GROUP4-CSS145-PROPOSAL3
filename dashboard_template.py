@@ -91,6 +91,8 @@ elif st.session_state.page_selection == "dataset":
     # st.write("Japan Birth Rate Dataset")
     # st.write("")
 
+    # Your content for your DATASET page goes here
+
     st.markdown("""
     ### Japan Birth Statistics Dataset Overview
 
@@ -98,7 +100,7 @@ elif st.session_state.page_selection == "dataset":
 
     This dataset covers various statistics related to births in Japan, such as birth rate, gender ratio, population, death rate, parents' ages, and the number of children per family. The data spans from **1899 to 2022**, though some years are missing due to record losses during World War II, providing over **120 years** of historical perspective.
 
-    #### Content  
+    **Content**  
     The dataset contains around **50 columns**; however, only a selected subset will be used for our analysis. The main focus will be on predicting Japan's birth rate trends over the next few years.
 
     ### Project Goals
@@ -107,9 +109,11 @@ elif st.session_state.page_selection == "dataset":
     ### Proposed Models
     Given the time-series nature of this prediction, we will employ time series models, particularly **ARIMA**. Additionally, regression models will be tested to determine which factors are most influential in affecting Japan's birth rate.
 
-    ### Dataset Preview and Descriptive Statistics
-    [Insert dataset preview table here, displaying a few rows]
+    ### Dataset Preview and Descriptive Statistics""")
+                
+    st.dataframe(dataset, use_container_width=True, hide_index=True)
 
+    st.markdown("""
     ### Summary Statistics
     Below is an overview of some key statistics related to the birth rate and influencing factors.
 
@@ -127,9 +131,6 @@ elif st.session_state.page_selection == "dataset":
     With these insights and models, we aim to provide a predictive analysis of Japan's future birth rate, contributing to demographic research and planning.
     """)
 
-
-
-    # Your content for your DATASET page goes here
 
 # EDA Page
 elif st.session_state.page_selection == "eda":
