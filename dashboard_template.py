@@ -138,7 +138,7 @@ elif st.session_state.page_selection == "dataset":
     Our project aims to use this dataset to forecast the birth rate in Japan for the next five years. Although data collection stops at 2022, the extensive historical records provide a solid foundation for predicting trends. We will also explore correlations between birth rate and factors like parents' ages and external events, such as economic downturns, pandemics, and natural disasters, to understand how these factors may influence birth rates.
 
     ### Proposed Models
-    Given the time-series nature of this prediction, we will employ time series models, particularly **ARIMA**. Additionally, regression models will be tested to determine which factors are most influential in affecting Japan's birth rate.
+    Given the time-series nature of this prediction, we will employ a linear regression model which would be used to test which features would impact birth rate the most in our machine learning predictions.
 
     ### Dataset Preview
     """)
