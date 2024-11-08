@@ -188,8 +188,19 @@ elif st.session_state.page_selection == "data_cleaning":
 
     st.markdown("Because of this, we chose to specifically make use of certain columns by separating them from the actual dataset, and as mentioned earlier, we placed it into a separate one, this is so that we can be more organized and have a clearer vision of what columns and data we will use")
 
-    # Your content for the DATA CLEANING / PREPROCESSING page goes here
+    st.code("dfnew.loc[:, ['birth_total', 'birth_male', 'birth_female', 'birth_rate', 'birth_gender_ratio']] = dfnew[['birth_total', 'birth_male', 'birth_female', 'birth_rate', 'birth_gender_ratio']].ffill()")
+    
+    st.markdown("For this new dataset, it still contained missing data due to the World War, a lot of data actually. So we decided to make use of forward fill to make up for this gap in the dataset, just so that we can have a better source of data than having none at all.")
 
+    st.code("features = ['year', 'birth_total', 'birth_male', 'birth_female', 'birth_rate','birth_gender_ratio', 'population_total','population_male', 'population_female']dfnew['birth_rate']")
+
+    st.markdown("These are the specific features that we would be using for our machine learning later, here the data is being prepared and setup for machine learning use later on")
+
+    st.code("X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)")
+
+    st.markdown("As you can see these is where we have split our data for training and testing.")
+
+    st.markdown("After this we would be then be able to proceed with using the data for machine learning purposes in the project.")
 # Machine Learning Page
 elif st.session_state.page_selection == "machine_learning":
     st.header("🤖 Machine Learning")
