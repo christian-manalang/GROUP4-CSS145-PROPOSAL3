@@ -74,6 +74,20 @@ with st.sidebar:
 # Load data
 dataset = pd.read_csv("data/japan_birth.csv")
 
+# List of columns to keep
+columns_to_keep = [
+    'year', 'birth_total', 'birth_male', 'birth_female', 'birth_rate',
+    'birth_gender_ratio', 'population_total',
+    'population_male', 'population_female'
+]
+# Drop irrelevant columns
+dfnew = dataset[columns_to_keep]
+
+# Forward-fill missing values directly with .ffill()
+dfnew.loc[:, ['birth_total', 'birth_male', 'birth_female', 'birth_rate', 'birth_gender_ratio']] = dfnew[['birth_total', 'birth_male', 'birth_female', 'birth_rate', 'birth_gender_ratio']].ffill()
+
+
+
 #######################
 
 # Pages
@@ -112,13 +126,13 @@ elif st.session_state.page_selection == "dataset":
     ### Dataset Preview
     """)
                 
-    st.dataframe(dataset, use_container_width=True, hide_index=True)
+    st.dataframe(dfnew, use_container_width=True, hide_index=True)
 
     st.markdown("""
     ### Descriptive Statistics
     """)
 
-    st.dataframe(dataset.describe(), use_container_width=True)
+    st.dataframe(dfnew.describe(), use_container_width=True)
                 
     st.markdown("""
     The results from dfnew.describe show to us the different statistics that can be found within this new dataset that we have cleaned and filled with appropriate data that is missing. Here specifically we see how in each year there is an average of 1,641,856 births every year with a standard deviation of around 439,835 per year which is quite significant but understandable. It is also seen that ever since 1899, the lowest birth total recorded for the dataset was 770,759.
