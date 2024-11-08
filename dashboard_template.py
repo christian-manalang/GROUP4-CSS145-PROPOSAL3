@@ -180,7 +180,7 @@ elif st.session_state.page_selection == "eda":
 elif st.session_state.page_selection == "data_cleaning":
     st.header("🧼 Data Cleaning and Data Pre-processing")
 
-    st.dataframe(df.head(), use_container_width=True, hide_index=True)
+    st.dataframe(dataset.head(), use_container_width=True, hide_index=True)
 
     st.markdown("As of now this is our current dataset, it is full of unecessary columns that we won't be using for this project. Currently we plan to deal with this by separating this dataset and choosing the columns we need then inserting that into a separate dataset so that we only show the data and columns that we need.")
 
