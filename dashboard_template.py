@@ -5,6 +5,15 @@ import pandas as pd
 import altair as alt
 import plotly.express as px
 
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_squared_error, r2_score
+from statsmodels.tsa.arima.model import ARIMA
+
 #######################
 # Page configuration
 st.set_page_config(
@@ -29,7 +38,7 @@ def set_page_selection(page):
 with st.sidebar:
 
     # Sidebar Title (Change this with your project's title)
-    st.title('Dashboard Template')
+    st.title('Japan Birth Rate')
 
     # Page Button Navigation
     st.subheader("Pages")
@@ -57,13 +66,13 @@ with st.sidebar:
 
     # Project Members
     st.subheader("Members")
-    st.markdown("1. Elon Musk\n2. Jeff Bezos\n3. Sam Altman\n4. Mark Zuckerberg")
+    st.markdown("1. Dominic Ryan C. Gonzales\n2. Jorge Christian B. Manalang\n3. Kirk Adrian E. Sunico\n4. Charles Matthew L. Dela Cruz\n5. Liandro E. Refulle")
 
 #######################
 # Data
 
 # Load data
-dataset = pd.read_csv("data/IRIS.csv")
+dataset = pd.read_csv("data/japan_birth.csv")
 
 #######################
 
