@@ -92,22 +92,41 @@ elif st.session_state.page_selection == "dataset":
     # st.write("")
 
     st.markdown("""
-    ## 📊 Japan Birth Statistics Dataset Overview
+    ### Japan Birth Statistics Dataset Overview
 
-    - **Link to dataset**: [Japan Birth Statistics on Kaggle](https://www.kaggle.com/datasets/webdevbadger/japan-birth-statistics)
+    **Link to dataset**: [Japan Birth Statistics on Kaggle](https://www.kaggle.com/datasets/webdevbadger/japan-birth-statistics)
 
-    This dataset covers various statistics related to births in Japan, such as birth rate, gender ratio, population, death rate, parents' ages, and the number of children per family. The data spans from **1899 to 2022**, although some years are missing due to record losses during World War II. This extensive dataset offers a historical perspective of more than **120 years**.
+    This dataset covers various statistics related to births in Japan, such as birth rate, gender ratio, population, death rate, parents' ages, and the number of children per family. The data spans from **1899 to 2022**, though some years are missing due to record losses during World War II, providing over **120 years** of historical perspective.
 
-    - **Content**  
-      The dataset contains approximately **50 columns**, though we will focus on a selected subset to facilitate our project goals of analyzing and predicting Japan's birth rate trends.
+    #### Content  
+    The dataset contains around **50 columns**; however, only a selected subset will be used for our analysis. The main focus will be on predicting Japan's birth rate trends over the next few years.
 
     ### Project Goals
-    Our project aims to predict Japan’s birth rate for the next five years using historical data from this dataset. Despite data collection stopping in 2022, the historical coverage provides a solid foundation for forecasting trends. We’ll explore correlations between birth rate and factors like parents' ages and external events, such as economic shifts, pandemics, and natural disasters, to see how these influences might affect birth rates.
+    Our project aims to use this dataset to forecast the birth rate in Japan for the next five years. Although data collection stops at 2022, the extensive historical records provide a solid foundation for predicting trends. We will also explore correlations between birth rate and factors like parents' ages and external events, such as economic downturns, pandemics, and natural disasters, to understand how these factors may influence birth rates.
 
     ### Proposed Models
-    Given the time-based nature of our predictions, we will utilize time series models, particularly the **ARIMA model**, to forecast future trends. Additionally, we’ll experiment with regression models to identify factors that significantly impact the birth rate.
+    Given the time-series nature of this prediction, we will employ time series models, particularly **ARIMA**. Additionally, regression models will be tested to determine which factors are most influential in affecting Japan's birth rate.
 
-""")
+    ### Dataset Preview and Descriptive Statistics
+    [Insert dataset preview table here, displaying a few rows]
+
+    ### Summary Statistics
+    Below is an overview of some key statistics related to the birth rate and influencing factors.
+
+    - **Mean Birth Rate**: The dataset provides an average annual birth rate over the years, showing trends across decades.
+    - **Parent's Average Age**: Insights into the age at which parents tend to have children, highlighting shifts in demographic behavior.
+    - **Death Rate Influence**: The correlation between birth rate and mortality rates across different periods, particularly in times of historical crisis.
+
+    [Insert summary statistics table here with columns like Mean Birth Rate, Mean Parents' Age, and Death Rate]
+
+    ### Analysis Insights
+    - **Fluctuations in Birth Rate**: Historical data reveals birth rate changes due to various external factors, such as economic and social conditions.
+    - **Effect of Parents' Ages**: Trends in the age at which individuals start families can have significant implications on birth rates, especially as socio-economic factors evolve.
+    - **Historical Events and Birth Rate**: The dataset allows us to observe how major events, such as natural disasters, economic downturns, and public health crises, impacted birth rates.
+
+    With these insights and models, we aim to provide a predictive analysis of Japan's future birth rate, contributing to demographic research and planning.
+    """)
+
 
 
     # Your content for your DATASET page goes here
