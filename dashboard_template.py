@@ -88,8 +88,27 @@ if st.session_state.page_selection == "about":
 elif st.session_state.page_selection == "dataset":
     st.header("📊 Dataset")
 
-    st.write("IRIS Flower Dataset")
-    st.write("")
+    # st.write("Japan Birth Rate Dataset")
+    # st.write("")
+
+    st.markdown("""
+    ## 📊 Japan Birth Statistics Dataset Overview
+
+    - **Link to dataset**: [Japan Birth Statistics on Kaggle](https://www.kaggle.com/datasets/webdevbadger/japan-birth-statistics)
+
+    This dataset covers various statistics related to births in Japan, such as birth rate, gender ratio, population, death rate, parents' ages, and the number of children per family. The data spans from **1899 to 2022**, although some years are missing due to record losses during World War II. This extensive dataset offers a historical perspective of more than **120 years**.
+
+    - **Content**  
+      The dataset contains approximately **50 columns**, though we will focus on a selected subset to facilitate our project goals of analyzing and predicting Japan's birth rate trends.
+
+    ### Project Goals
+    Our project aims to predict Japan’s birth rate for the next five years using historical data from this dataset. Despite data collection stopping in 2022, the historical coverage provides a solid foundation for forecasting trends. We’ll explore correlations between birth rate and factors like parents' ages and external events, such as economic shifts, pandemics, and natural disasters, to see how these influences might affect birth rates.
+
+    ### Proposed Models
+    Given the time-based nature of our predictions, we will utilize time series models, particularly the **ARIMA model**, to forecast future trends. Additionally, we’ll experiment with regression models to identify factors that significantly impact the birth rate.
+
+""")
+
 
     # Your content for your DATASET page goes here
 
