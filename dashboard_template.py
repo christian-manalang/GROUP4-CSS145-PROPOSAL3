@@ -184,6 +184,10 @@ elif st.session_state.page_selection == "data_cleaning":
 
     st.markdown("As of now this is our current dataset, it is full of unecessary columns that we won't be using for this project. Currently we plan to deal with this by separating this dataset and choosing the columns we need then inserting that into a separate dataset so that we only show the data and columns that we need.")
 
+    st.dataframe(dfnew.head(), use_container_width=True, hide_index=True)
+
+    st.markdown("Because of this, we chose to specifically make use of certain columns by separating them from the actual dataset, and as mentioned earlier, we placed it into a separate one, this is so that we can be more organized and have a clearer vision of what columns and data we will use")
+
     # Your content for the DATA CLEANING / PREPROCESSING page goes here
 
 # Machine Learning Page
