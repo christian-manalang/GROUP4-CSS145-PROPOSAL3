@@ -121,21 +121,9 @@ elif st.session_state.page_selection == "dataset":
     st.dataframe(dataset.describe(), use_container_width=True)
                 
     st.markdown("""
-    ### Summary Statistics
-    Below is an overview of some key statistics related to the birth rate and influencing factors.
-
-    - **Mean Birth Rate**: The dataset provides an average annual birth rate over the years, showing trends across decades.
-    - **Parent's Average Age**: Insights into the age at which parents tend to have children, highlighting shifts in demographic behavior.
-    - **Death Rate Influence**: The correlation between birth rate and mortality rates across different periods, particularly in times of historical crisis.
-
-    [Insert summary statistics table here with columns like Mean Birth Rate, Mean Parents' Age, and Death Rate]
-
-    ### Analysis Insights
-    - **Fluctuations in Birth Rate**: Historical data reveals birth rate changes due to various external factors, such as economic and social conditions.
-    - **Effect of Parents' Ages**: Trends in the age at which individuals start families can have significant implications on birth rates, especially as socio-economic factors evolve.
-    - **Historical Events and Birth Rate**: The dataset allows us to observe how major events, such as natural disasters, economic downturns, and public health crises, impacted birth rates.
-
-    With these insights and models, we aim to provide a predictive analysis of Japan's future birth rate, contributing to demographic research and planning.
+    The results from dfnew.describe show to us the different statistics that can be found within this new dataset that we have cleaned and filled with appropriate data that is missing. Here specifically we see how in each year there is an average of 1,641,856 births every year with a standard deviation of around 439,835 per year which is quite significant but understandable. It is also seen that ever since 1899, the lowest birth total recorded for the dataset was 770,759.
+    Moving on, we can see how when it comes to birth rate, which is the main point of this project. The minimum value found was 6.3 while 25% was 9.97, 50% at 18.70, 75% at 32.32 and finally the maximum birth rate recorded is 36.20 which is also the latest data from 2022.
+    We can see initially that the birth rate of Japan from the 25th, 50th, and 75th percentiles were gradually increasing, but now we hear from the news how their birth rate is sharply decreasing as each year passes by, based on this we can probably conclude that the minimum value is actually Japan's current birth rate as based on graphs later, we would see how things took a turn for the worse it Japan's birth rate.
     """)
 
 
