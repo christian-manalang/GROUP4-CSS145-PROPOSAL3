@@ -109,10 +109,17 @@ elif st.session_state.page_selection == "dataset":
     ### Proposed Models
     Given the time-series nature of this prediction, we will employ time series models, particularly **ARIMA**. Additionally, regression models will be tested to determine which factors are most influential in affecting Japan's birth rate.
 
-    ### Dataset Preview and Descriptive Statistics""")
+    ### Dataset Preview
+    """)
                 
     st.dataframe(dataset, use_container_width=True, hide_index=True)
 
+    st.markdown("""
+    ### Descriptive Statistics
+    """)
+
+    st.dataframe(dataset.describe(), use_container_width=True)
+                
     st.markdown("""
     ### Summary Statistics
     Below is an overview of some key statistics related to the birth rate and influencing factors.
