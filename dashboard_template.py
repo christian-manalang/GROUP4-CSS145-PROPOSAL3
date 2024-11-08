@@ -103,15 +103,10 @@ if st.session_state.page_selection == "about":
     #### Pages
 
     1.`Dataset` - Overview of Japan's birth statistics, including birth rates, parent ages, gender ratios, and factors like economic and calamity impacts on birth trends.
-                
-    2.`EDA` - Exploratory analysis on birth rate fluctuations and demographic patterns over the years, with visualizations highlighting correlations between key factors.
-                
+    2.`EDA - Exploratory analysis on birth rate fluctuations and demographic patterns over the years, with visualizations highlighting correlations between key factors.
     3.`Data Cleaning / Pre-processing` - Cleaning and transforming historical data for accurate modeling, handling missing values, and selecting relevant columns.
-    
     4.`Machine Learning` - Using ARIMA for time-series forecasting and Regression Analysis to assess the impact of factors like parent ages and economic changes on birth rates.
-    
     5.`Prediction` - Interactive prediction feature to estimate Japan's future birth rate, providing insights based on historical patterns and influential factors.
-    
     6.`Conclusion` - Summarized insights on Japan's birth trends, key factors, and model performance in predicting future rates.
                 """)
 
@@ -184,6 +179,10 @@ elif st.session_state.page_selection == "eda":
 # Data Cleaning Page
 elif st.session_state.page_selection == "data_cleaning":
     st.header("🧼 Data Cleaning and Data Pre-processing")
+
+    st.dataframe(df.head(), use_container_width=True, hide_index=True)
+
+    st.markdown("As of now this is our current dataset, it is full of unecessary columns that we won't be using for this project. Currently we plan to deal with this by separating this dataset and choosing the columns we need then inserting that into a separate dataset so that we only show the data and columns that we need.")
 
     # Your content for the DATA CLEANING / PREPROCESSING page goes here
 
