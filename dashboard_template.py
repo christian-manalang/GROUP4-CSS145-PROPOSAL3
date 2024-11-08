@@ -96,6 +96,23 @@ dfnew.loc[:, ['birth_total', 'birth_male', 'birth_female', 'birth_rate', 'birth_
 if st.session_state.page_selection == "about":
     st.header("ℹ️ About")
 
+    st.markdown(""" 
+
+    A Streamlit web application that performs **Exploratory Data Analysis (EDA)**, **Data Preprocessing**, and **Supervised Machine Learning** to classify Iris species from the Iris dataset (Setosa, Versicolor, and Virginica) using **Decision Tree Classifier** and **Random Forest Regressor**.
+
+    #### Pages
+    1. `Dataset` - Brief description of the Iris Flower dataset used in this dashboard. 
+    2. `EDA` - Exploratory Data Analysis of the Iris Flower dataset. Highlighting the distribution of Iris species and the relationship between the features. Includes graphs such as Pie Chart, Scatter Plots, and Pairwise Scatter Plot Matrix.
+    3. `Data Cleaning / Pre-processing` - Data cleaning and pre-processing steps such as encoding the species column and splitting the dataset into training and testing sets.
+    4. `Machine Learning` - Training two supervised classification models: Decision Tree Classifier and Random Forest Regressor. Includes model evaluation, feature importance, and tree plot.
+    5. `Prediction` - Prediction page where users can input values to predict the Iris species using the trained models.
+    6. `Conclusion` - Summary of the insights and observations from the EDA and model training.
+
+
+    """)
+
+
+
     # Your content for the ABOUT page goes here
 
 # Dataset Page
