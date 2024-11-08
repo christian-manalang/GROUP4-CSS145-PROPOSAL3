@@ -98,7 +98,17 @@ if st.session_state.page_selection == "about":
 
     st.markdown(""" 
 
-    edit""")
+    A data-driven web application to analyze and predict Japan's birth rate trends using historical data from 1899 to 2022. This project applies Exploratory Data Analysis (EDA), Time Series Forecasting, and Regression Modeling to identify key factors influencing birth rates and project future rates over the next five years.
+
+    #### Pages
+
+    1.'Dataset' - Overview of Japan's birth statistics, including birth rates, parent ages, gender ratios, and factors like economic and calamity impacts on birth trends.
+    2.'EDA' - Exploratory analysis on birth rate fluctuations and demographic patterns over the years, with visualizations highlighting correlations between key factors.
+    3.'Data' Preprocessing - Cleaning and transforming historical data for accurate modeling, handling missing values, and selecting relevant columns.
+    4.'Modeling' - Using ARIMA for time-series forecasting and Regression Analysis to assess the impact of factors like parent ages and economic changes on birth rates.
+    5.'Prediction' - Interactive prediction feature to estimate Japan's future birth rate, providing insights based on historical patterns and influential factors.
+    6.'Conclusion' - Summarized insights on Japan's birth trends, key factors, and model performance in predicting future rates.
+                """)
 
 
 
