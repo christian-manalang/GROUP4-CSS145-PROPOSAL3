@@ -192,13 +192,13 @@ elif st.session_state.page_selection == "data_cleaning":
     
     st.markdown("For this new dataset, it still contained missing data due to the World War, a lot of data actually. So we decided to make use of forward fill to make up for this gap in the dataset, just so that we can have a better source of data than having none at all.")
 
-    st.code("features = ['year', 'birth_total', 'birth_male', 'birth_female', 'birth_rate','birth_gender_ratio', 'population_total','population_male', 'population_female']dfnew['birth_rate']")
+    st.code("features = dfnew[['year', 'population_total', 'birth_total']] target = dfnew['birth_rate']")
 
     st.markdown("These are the specific features that we would be using for our machine learning later, here the data is being prepared and setup for machine learning use later on")
 
     st.code("X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)")
 
-    st.markdown("As you can see these is where we have split our data for training and testing.")
+    st.markdown("As you can see these is where we have split our data for training and testing. You can see that for our features we have set year, population total, and birth total. While for our target it would be birth rate since this is what we want to predict using our model.")
 
     st.markdown("After this we would be then be able to proceed with using the data for machine learning purposes in the project.")
 # Machine Learning Page
