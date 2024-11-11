@@ -166,11 +166,9 @@ elif st.session_state.page_selection == "eda":
 
     # Your content for the EDA page goes here
 
-    dfnew.info()
-
-    dfnew.describe()
-
-    dfnew['birth_rate'].unique()
+    st.write(dfnew.info())
+    st.write(dfnew.describe())
+    st.write("Unique Birth Rates:", dfnew['birth_rate'].unique())
 
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_rate'], marker='o', linestyle='-', color='b')
