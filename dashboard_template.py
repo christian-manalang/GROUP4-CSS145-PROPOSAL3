@@ -180,7 +180,7 @@ elif st.session_state.page_selection == "eda":
     plt.grid(True)
     plt.xticks(rotation=45)
     plt.tight_layout()
-    plt.show()
+    st.pyplot(plt)
 
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_total'], marker='o', linestyle='-', color='r')
@@ -190,7 +190,7 @@ elif st.session_state.page_selection == "eda":
     plt.grid(True)
     plt.xticks(rotation=45)
     plt.tight_layout()
-    plt.show()
+    st.pyplot(plt)
 
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_male'], color='blue', marker='o', linestyle='-')
@@ -198,7 +198,7 @@ elif st.session_state.page_selection == "eda":
     plt.xlabel('Year')
     plt.ylabel('Total Male Births')
     plt.grid(True)
-    plt.show()
+    st.pyplot(plt)
 
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_female'], color='red', marker='o', linestyle='-')
@@ -206,7 +206,7 @@ elif st.session_state.page_selection == "eda":
     plt.xlabel('Year')
     plt.ylabel('Total Female Births')
     plt.grid(True)
-    plt.show()
+    st.pyplot(plt)
 
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_male'], label='Male Births', color='blue', marker='o', linestyle='-')
@@ -218,7 +218,7 @@ elif st.session_state.page_selection == "eda":
     plt.grid(True)
     plt.xticks(rotation=45)
     plt.tight_layout()
-    plt.show()
+    st.pyplot(plt)
 
 
     # with col[0]:
