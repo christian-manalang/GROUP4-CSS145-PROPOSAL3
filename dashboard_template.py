@@ -458,6 +458,20 @@ elif st.session_state.page_selection == "machine_learning":
 # Prediction Page
 elif st.session_state.page_selection == "prediction":
     st.header("👀 Prediction")
+    
+    st.code("""
+
+   features = ['year', 'birth_total', 'birth_male', 'birth_female', 'birth_rate','birth_gender_ratio', 'population_total','population_male', 'population_female']
+dfnew['birth_rate']
+     
+    """)
+    st.markdown("""
+    Linear regression is a type of model which makes use of different variables to predict a specific variable. This variable that we choose to predict must be dependent on these independent variables in order to see how these independent variables ultimately impact the dependent variable.
+
+In our case, we chose year, population_total, and birth_total as our independent variables, while birth_rate is our dependent variable, being the variable that we want to predict for this project.
+
+By using linear regression model, we want to see how these three variables play a part in affecting a country's birth rate, in our case it is Japan.")
+    """)
     features = dfnew[['year', 'population_total', 'birth_total']]  # Add or modify as needed
     target = dfnew['birth_rate']  # Target variable for prediction
 
