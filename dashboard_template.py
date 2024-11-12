@@ -486,7 +486,34 @@ elif st.session_state.page_selection == "prediction":
     plt.ylabel('Birth Rate')
     plt.legend()
     plt.grid()
-    plt.show()
+    
+
+    # Example unseen data, made randomly in decrements of 10000-50000 starting from year 2022 in the japan_birth.csv
+    df_unseen = pd.DataFrame({
+        'year': [2023, 2024, 2025, 2026, 2027],
+        'birth_total': [762011, 751055, 726175, 699909, 678123],
+        'population_total': [122003123, 121981454, 121956174, 121929406, 121782339 ]
+    })
+
+    #assign the unseen_features to the df_unseen to use for later.
+    unseen_features = df_unseen[['year', 'population_total', 'birth_total']]
+
+    # Make predictions on the unseen data.
+    unseen_predictions = model.predict(unseen_features)
+
+    # Display predictions.
+    print("Predicted Birth Rates for Unseen Data:")
+    print(unseen_predictions)
+
+    #visualization through line graph.
+    plt.figure(figsize=(10, 6))
+    plt.plot(unseen_predictions, label='Predicted Birth Rate', color='green', marker='x')
+    plt.title('Predicted Birth Rate on Unseen Data')
+    plt.xlabel('Sample Index')
+    plt.ylabel('Predicted Birth Rate')
+    plt.legend()
+    plt.grid()
+    
 
 # Conclusions Page
 elif st.session_state.page_selection == "conclusion":
