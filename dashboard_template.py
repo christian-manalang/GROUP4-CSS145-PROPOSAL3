@@ -487,7 +487,12 @@ elif st.session_state.page_selection == "prediction":
     plt.legend()
     plt.grid()
     st.pyplot(plt)
-    
+
+    st.markdown("""
+    So this line graph is the trained model wherein as we can see here it is quite accurate in the sense that it follows through with both the actual birth rate and the model's prediction.
+
+    With that in mind it seems that the model itself works fine and it is the right model to use for this kind of dataset. Though we might still try to use ARIMA but it still remains confusing for most us to use.      
+    """)
 
     # Example unseen data, made randomly in decrements of 10000-50000 starting from year 2022 in the japan_birth.csv
     df_unseen = pd.DataFrame({
@@ -515,6 +520,14 @@ elif st.session_state.page_selection == "prediction":
     plt.legend()
     plt.grid()
     st.pyplot(plt) 
+
+    st.markdown("""
+   So here is a line graph depicting the model's performance when it comes to unseen data, in this case we gathered these different variables from random decrements from the latest data in the dataset which is from 2022, so from there we randomly decremented it each year by around 10000-30000.
+
+Based on our opinions regarding this model is that it is quite accurate, as you can see it is clearly depicting Japan's birth rate, however it is shocking that the predicted birth rate is higher than the actual dataset values.
+
+We think that this is quite probably because of the fact that there are many other factors to birth rate and that we probably need to add more features but we can still also experiment and see what features may impact the birth rate other than the ones that were mentioned in the main dataset which were birth total and population total. 
+        """)
 
 # Conclusions Page
 elif st.session_state.page_selection == "conclusion":
