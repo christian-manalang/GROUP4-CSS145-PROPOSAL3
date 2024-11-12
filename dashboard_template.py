@@ -160,16 +160,31 @@ elif st.session_state.page_selection == "dataset":
 # EDA Page
 elif st.session_state.page_selection == "eda":
     st.header("📈 Exploratory Data Analysis (EDA)")
-
-
     col = st.columns((1.5, 4.5, 2), gap='medium')
-
-    # Your content for the EDA page goes here
-
+    
+    st.markdown("""
+    The `dfnew.info()` shows to us the several different columns that will be mainly used for this project. 
+    The float columns suggest that it contains decimals while the integer columns are mainly whole numbers.
+    """)
+    
     st.write(dfnew.info())
     st.write(dfnew.describe())
     st.write("Unique Birth Rates:", dfnew['birth_rate'].unique())
+    
+    st.markdown("""
+    As we have said from earlier, the birth rate of Japan is actually declining from the years. With that said we can 
+    safely assume that once again it would continue towards a downwards trend unless an external factor is brought 
+    upon their country which would help their birth rate immensely.
 
+    It would also be appropriate to mention now how there are large gaps of differences in certain places of birth rate values, 
+    this is because in Japan's history there has been many occurances which made their birth rate lower.
+
+    To mention a few, obviously the World Wars played a part in it, lowering overall birth rate, however, it is also 
+    essential to take note that in the 1960s Japan birth rate plumetted all because of their superstition that females 
+    born during 1966 would have a bad personality and often kill their husbands. This is called the Hinoe-Uma (Fire horse) 
+    if you want to search about it more.
+    """)
+    
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_rate'], marker='o', linestyle='-', color='b')
     plt.title('Birth Rate in Japan (1899 - 2022)')
@@ -179,7 +194,13 @@ elif st.session_state.page_selection == "eda":
     plt.xticks(rotation=45)
     plt.tight_layout()
     st.pyplot(plt)
-
+    
+    st.markdown("""
+    In this line graph, we can visually see how the birth rate of Japan at one point was still high, consistently 
+    dipping and rising as wars, illnesses, and other external factor affect the country. However at a certain point, 
+    the birth rate suddenly dipped once and there it continously dropped lower and lower to what it is now in present time.
+    """)
+    
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_total'], marker='o', linestyle='-', color='r')
     plt.title('Total Births in Japan (1899 - 2022)')
@@ -189,7 +210,13 @@ elif st.session_state.page_selection == "eda":
     plt.xticks(rotation=45)
     plt.tight_layout()
     st.pyplot(plt)
-
+    
+    st.markdown("""
+    In this line graph, we can visually see the number of total births in Japan accounting for both male and female. 
+    As we can see it has been declining fast from 1980 and onwards, this is probably due to the ever changing culture 
+    of Japan and how they treat relationships and having children in general.
+    """)
+    
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_male'], color='blue', marker='o', linestyle='-')
     plt.title('Total Male Births in Japan (1899 - 2022)')
@@ -197,7 +224,7 @@ elif st.session_state.page_selection == "eda":
     plt.ylabel('Total Male Births')
     plt.grid(True)
     st.pyplot(plt)
-
+    
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_female'], color='red', marker='o', linestyle='-')
     plt.title('Total Female Births in Japan (1899 - 2022)')
@@ -205,7 +232,7 @@ elif st.session_state.page_selection == "eda":
     plt.ylabel('Total Female Births')
     plt.grid(True)
     st.pyplot(plt)
-
+    
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_male'], label='Male Births', color='blue', marker='o', linestyle='-')
     plt.plot(dfnew['year'], dfnew['birth_female'], label='Female Births', color='red', marker='o', linestyle='-')
@@ -217,17 +244,12 @@ elif st.session_state.page_selection == "eda":
     plt.xticks(rotation=45)
     plt.tight_layout()
     st.pyplot(plt)
-
-
-    # with col[0]:
-    #     st.markdown('#### Graphs Column 1')
-
-
-    # with col[1]:
-    #     st.markdown('#### Graphs Column 2')
-        
-    # with col[2]:
-    #     st.markdown('#### Graphs Column 3')
+    
+    st.markdown("""
+    In this line graph we combined both the births of females and males to see how much of a difference they have when 
+    it comes to the deviation between the two genders. This can also be a way to see how accurate the males per females 
+    born is. Generally we can see how males always dominated over the females born which is quite normal in many other countries.
+    """)
 
 # Data Cleaning Page
 elif st.session_state.page_selection == "data_cleaning":
