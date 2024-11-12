@@ -102,21 +102,16 @@ if st.session_state.page_selection == "about":
 
     #### Pages
 
-    1.`Dataset` - Overview of Japan's birth statistics, including birth rates, parent ages, gender ratios, and factors like economic and calamity impacts on birth trends.
-                
-    2.`EDA` - Exploratory analysis on birth rate fluctuations and demographic patterns over the years, with visualizations highlighting correlations between key factors.
-                
-    3.`Data Cleaning / Pre-processing` - Cleaning and transforming historical data for accurate modeling, handling missing values, and selecting relevant columns.
-    
-    4.`Machine Learning` - Using ARIMA for time-series forecasting and Regression Analysis to assess the impact of factors like parent ages and economic changes on birth rates.
-    
-    5.`Prediction` - Interactive prediction feature to estimate Japan's future birth rate, providing insights based on historical patterns and influential factors.
-    
-    6.`Conclusion` - Summarized insights on Japan's birth trends, key factors, and model performance in predicting future rates.
+    1. `Dataset` - Overview of Japan's birth statistics, including birth rates, parent ages, gender ratios, and factors like economic and calamity impacts on birth trends.
+    2. `EDA` - Exploratory analysis on birth rate fluctuations and demographic patterns over the years, with visualizations highlighting correlations between key factors.
+    3. `Data Cleaning / Pre-processing` - Cleaning and transforming historical data for accurate modeling, handling missing values, and selecting relevant columns.
+    4. `Machine Learning` - Using ARIMA for time-series forecasting and Regression Analysis to assess the impact of factors like parent ages and economic changes on birth rates.
+    5. `Prediction` - Interactive prediction feature to estimate Japan's future birth rate, providing insights based on historical patterns and influential factors.
+    6. `Conclusion` - Summarized insights on Japan's birth trends, key factors, and model performance in predicting future rates.
                 """)
 
 
-
+ 
     # Your content for the ABOUT page goes here
 
 # Dataset Page
@@ -171,22 +166,94 @@ elif st.session_state.page_selection == "eda":
 
     # Your content for the EDA page goes here
 
-    with col[0]:
-        st.markdown('#### Graphs Column 1')
+    st.write(dfnew.info())
+    st.write(dfnew.describe())
+    st.write("Unique Birth Rates:", dfnew['birth_rate'].unique())
+
+    plt.figure(figsize=(12, 6))
+    plt.plot(dfnew['year'], dfnew['birth_rate'], marker='o', linestyle='-', color='b')
+    plt.title('Birth Rate in Japan (1899 - 2022)')
+    plt.xlabel('Year')
+    plt.ylabel('Birth Rate')
+    plt.grid(True)
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    st.pyplot(plt)
+
+    plt.figure(figsize=(12, 6))
+    plt.plot(dfnew['year'], dfnew['birth_total'], marker='o', linestyle='-', color='r')
+    plt.title('Total Births in Japan (1899 - 2022)')
+    plt.xlabel('Year')
+    plt.ylabel('Total Births')
+    plt.grid(True)
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    st.pyplot(plt)
+
+    plt.figure(figsize=(12, 6))
+    plt.plot(dfnew['year'], dfnew['birth_male'], color='blue', marker='o', linestyle='-')
+    plt.title('Total Male Births in Japan (1899 - 2022)')
+    plt.xlabel('Year')
+    plt.ylabel('Total Male Births')
+    plt.grid(True)
+    st.pyplot(plt)
+
+    plt.figure(figsize=(12, 6))
+    plt.plot(dfnew['year'], dfnew['birth_female'], color='red', marker='o', linestyle='-')
+    plt.title('Total Female Births in Japan (1899 - 2022)')
+    plt.xlabel('Year')
+    plt.ylabel('Total Female Births')
+    plt.grid(True)
+    st.pyplot(plt)
+
+    plt.figure(figsize=(12, 6))
+    plt.plot(dfnew['year'], dfnew['birth_male'], label='Male Births', color='blue', marker='o', linestyle='-')
+    plt.plot(dfnew['year'], dfnew['birth_female'], label='Female Births', color='red', marker='o', linestyle='-')
+    plt.title('Total Births of Males and Females in Japan (1899 - 2022)')
+    plt.xlabel('Year')
+    plt.ylabel('Total Births')
+    plt.legend()
+    plt.grid(True)
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    st.pyplot(plt)
 
 
-    with col[1]:
-        st.markdown('#### Graphs Column 2')
+    # with col[0]:
+    #     st.markdown('#### Graphs Column 1')
+
+
+    # with col[1]:
+    #     st.markdown('#### Graphs Column 2')
         
-    with col[2]:
-        st.markdown('#### Graphs Column 3')
+    # with col[2]:
+    #     st.markdown('#### Graphs Column 3')
 
 # Data Cleaning Page
 elif st.session_state.page_selection == "data_cleaning":
     st.header("🧼 Data Cleaning and Data Pre-processing")
 
-    # Your content for the DATA CLEANING / PREPROCESSING page goes here
+    st.dataframe(dataset.head(), use_container_width=True, hide_index=True)
 
+    st.markdown("As of now this is our current dataset, it is full of unecessary columns that we won't be using for this project. Currently we plan to deal with this by separating this dataset and choosing the columns we need then inserting that into a separate dataset so that we only show the data and columns that we need.")
+
+    st.dataframe(dfnew.head(), use_container_width=True, hide_index=True)
+
+    st.markdown("Because of this, we chose to specifically make use of certain columns by separating them from the actual dataset, and as mentioned earlier, we placed it into a separate one, this is so that we can be more organized and have a clearer vision of what columns and data we will use")
+
+    st.code("dfnew.loc[:, ['birth_total', 'birth_male', 'birth_female', 'birth_rate', 'birth_gender_ratio']] = dfnew[['birth_total', 'birth_male', 'birth_female', 'birth_rate', 'birth_gender_ratio']].ffill()")
+    
+    st.markdown("For this new dataset, it still contained missing data due to the World War, a lot of data actually. So we decided to make use of forward fill to make up for this gap in the dataset, just so that we can have a better source of data than having none at all.")
+
+    st.code("features = dfnew[['year', 'population_total', 'birth_total']] target = dfnew['birth_rate']")
+
+    st.markdown("These are the specific features that we would be using for our machine learning later, here the data is being prepared and setup for machine learning use later on")
+
+    st.code("X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)")
+
+    st.markdown("As you can see these is where we have split our data for training and testing. You can see that for our features we have set year, population total, and birth total. While for our target it would be birth rate since this is what we want to predict using our model.")
+
+    st.markdown("After this we would be then be able to proceed with using the data for machine learning purposes in the project.")
 # Machine Learning Page
 elif st.session_state.page_selection == "machine_learning":
     st.header("🤖 Machine Learning")
