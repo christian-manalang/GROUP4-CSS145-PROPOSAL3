@@ -254,6 +254,8 @@ elif st.session_state.page_selection == "data_cleaning":
     st.markdown("As you can see these is where we have split our data for training and testing. You can see that for our features we have set year, population total, and birth total. While for our target it would be birth rate since this is what we want to predict using our model.")
 
     st.markdown("After this we would be then be able to proceed with using the data for machine learning purposes in the project.")
+
+    
 # Machine Learning Page
 elif st.session_state.page_selection == "machine_learning":
     st.header("🤖 Machine Learning")
