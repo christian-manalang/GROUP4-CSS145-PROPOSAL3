@@ -274,15 +274,15 @@ elif st.session_state.page_selection == "machine_learning":
     # Columns to center the Decision Tree Parts image
     col_dt_fig = st.columns((2, 4, 2), gap='medium')
 
-    with col_dt_fig[0]:
-        st.write(' ')
+  #  with col_dt_fig[0]:
+   #     st.write(' ')
 
-    with col_dt_fig[1]:
-        decision_tree_parts_image = Image.open('assets/JapanIcon.png')
-        st.image(decision_tree_parts_image, caption='Decision Tree Parts') 
+    #with col_dt_fig[1]:
+     #   decision_tree_parts_image = Image.open('assets/JapanIcon.png')
+      #  st.image(decision_tree_parts_image, caption='Decision Tree Parts') 
 
-    with col_dt_fig[2]:
-        st.write(' ')
+   # with col_dt_fig[2]:
+    #    st.write(' ')
 
     st.subheader("Training the Decision Tree Classifier")
 
