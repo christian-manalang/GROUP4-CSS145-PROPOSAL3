@@ -486,6 +486,7 @@ elif st.session_state.page_selection == "prediction":
     plt.ylabel('Birth Rate')
     plt.legend()
     plt.grid()
+    st.pyplot(plt)
     
 
     # Example unseen data, made randomly in decrements of 10000-50000 starting from year 2022 in the japan_birth.csv
@@ -513,7 +514,7 @@ elif st.session_state.page_selection == "prediction":
     plt.ylabel('Predicted Birth Rate')
     plt.legend()
     plt.grid()
-    
+    st.pyplot(plt) 
 
 # Conclusions Page
 elif st.session_state.page_selection == "conclusion":
