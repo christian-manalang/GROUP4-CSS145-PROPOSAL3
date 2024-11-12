@@ -459,6 +459,7 @@ elif st.session_state.page_selection == "machine_learning":
 elif st.session_state.page_selection == "prediction":
     st.header("👀 Prediction")
     
+    st.subheader("Linear Regression")
     st.code("""
 
    features = ['year', 'birth_total', 'birth_male', 'birth_female', 'birth_rate','birth_gender_ratio', 'population_total','population_male', 'population_female']
@@ -472,6 +473,9 @@ In our case, we chose year, population_total, and birth_total as our independent
 
 By using linear regression model, we want to see how these three variables play a part in affecting a country's birth rate, in our case it is Japan.")
     """)
+
+
+    st.subheader("Graph showing the 'Actual vs Predicted Birth Rate'")
     features = dfnew[['year', 'population_total', 'birth_total']]  # Add or modify as needed
     target = dfnew['birth_rate']  # Target variable for prediction
 
@@ -507,6 +511,8 @@ By using linear regression model, we want to see how these three variables play 
 
     With that in mind it seems that the model itself works fine and it is the right model to use for this kind of dataset. Though we might still try to use ARIMA but it still remains confusing for most us to use.      
     """)
+
+    st.subheader("Graph showing the 'Predicted Birth Rate on Unseen Data'")
 
     # Example unseen data, made randomly in decrements of 10000-50000 starting from year 2022 in the japan_birth.csv
     df_unseen = pd.DataFrame({
