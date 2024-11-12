@@ -278,8 +278,8 @@ elif st.session_state.page_selection == "machine_learning":
         st.write(' ')
 
     with col_dt_fig[1]:
-        decision_tree_parts_image = Image.open('assets/figures/JapanIcon.png')
-        st.image(decision_tree_parts_image, caption='Decision Tree Parts')
+        decision_tree_parts_image = Image.open('assets/JapanIcon.png')
+        st.image(decision_tree_parts_image, caption='Decision Tree Parts') 
 
     with col_dt_fig[2]:
         st.write(' ')
