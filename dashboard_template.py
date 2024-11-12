@@ -458,108 +458,35 @@ elif st.session_state.page_selection == "machine_learning":
 # Prediction Page
 elif st.session_state.page_selection == "prediction":
     st.header("👀 Prediction")
+    features = dfnew[['year', 'population_total', 'birth_total']]  # Add or modify as needed
+    target = dfnew['birth_rate']  # Target variable for prediction
 
-    col_pred = st.columns((1.5, 3, 3), gap='medium')
+# Split the data into training and testing sets
+    X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
 
-    # Initialize session state for clearing results
-    if 'clear' not in st.session_state:
-        st.session_state.clear = False
+# Initialize the model
+    model = LinearRegression()
 
-    with col_pred[0]:
-        with st.expander('Options', expanded=True):
-            show_dataset = st.checkbox('Show Dataset')
-            show_classes = st.checkbox('Show All Classes')
-            show_setosa = st.checkbox('Show Setosa')
-            show_versicolor = st.checkbox('Show Versicolor')
-            show_virginica = st.checkbox('Show Virginica')
+# Training the model
+    model.fit(X_train, y_train)
 
-            clear_results = st.button('Clear Results', key='clear_results')
+# Make predictions
+    y_pred = model.predict(X_test)
 
-            if clear_results:
+# Evaluate the model
+    mse = mean_squared_error(y_test, y_pred)
+    r2 = r2_score(y_test, y_pred)
 
-                st.session_state.clear = True
-
-    with col_pred[1]:
-        st.markdown("#### 🌲 Decision Tree Classifier")
-        
-        # Input boxes for the features
-        dt_sepal_length = st.number_input('Sepal Length', min_value=0.0, max_value=10.0, step=0.1, key='dt_sepal_length', value=0.0 if st.session_state.clear else st.session_state.get('dt_sepal_length', 0.0))
-        dt_sepal_width = st.number_input('Sepal Width', min_value=0.0, max_value=10.0, step=0.1, key='dt_sepal_width', value=0.0 if st.session_state.clear else st.session_state.get('dt_sepal_width', 0.0))
-        dt_petal_width = st.number_input('Petal Width', min_value=0.0, max_value=10.0, step=0.1, key='dt_petal_width', value=0.0 if st.session_state.clear else st.session_state.get('dt_petal_width', 0.0))
-        dt_petal_length = st.number_input('Petal Length', min_value=0.0, max_value=10.0, step=0.1, key='dt_petal_length', value=0.0 if st.session_state.clear else st.session_state.get('dt_petal_length', 0.0))
-
-        classes_list = ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']
-        
-        # Button to detect the Iris species
-        if st.button('Detect', key='dt_detect'):
-            # Prepare the input data for prediction
-            dt_input_data = [[dt_sepal_width, dt_sepal_length, dt_petal_width, dt_petal_length]]
-            
-            # Predict the Iris species
-            dt_prediction = dt_classifier.predict(dt_input_data)
-            
-            # Display the prediction result
-            st.markdown(f'The predicted Iris species is: `{classes_list[dt_prediction[0]]}`')
-
-    with col_pred[2]:
-        st.markdown("#### 🌲🌲🌲 Random Forest Regressor")
-
-        # Input boxes for the features
-        rfr_sepal_length = st.number_input('Sepal Length', min_value=0.0, max_value=10.0, step=0.1, key='rfr_sepal_length', value=0.0 if st.session_state.clear else st.session_state.get('rfr_sepal_length', 0.0))
-        rfr_sepal_width = st.number_input('Sepal Width', min_value=0.0, max_value=10.0, step=0.1, key='rfr_sepal_width', value=0.0 if st.session_state.clear else st.session_state.get('rfr_sepal_width', 0.0))
-        rfr_petal_width = st.number_input('Petal Width', min_value=0.0, max_value=10.0, step=0.1, key='rfr_petal_width', value=0.0 if st.session_state.clear else st.session_state.get('rfr_petal_width', 0.0))
-        rfr_petal_length = st.number_input('Petal Length', min_value=0.0, max_value=10.0, step=0.1, key='rfr_petal_length', value=0.0 if st.session_state.clear else st.session_state.get('rfr_petal_length', 0.0))
-
-        classes_list = ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']
-        
-        # Button to detect the Iris species
-        if st.button('Detect', key='rfr_detect'):
-            # Prepare the input data for prediction
-            rfr_input_data = [[rfr_sepal_width, rfr_sepal_length, rfr_petal_width, rfr_petal_length]]
-            
-            # Predict the Iris species
-            rfr_prediction = dt_classifier.predict(rfr_input_data)
-            
-            # Display the prediction result
-            st.markdown(f'The predicted Iris species is: `{classes_list[rfr_prediction[0]]}`')
-
-    # Create 3 Data Frames containing  5 rows for each species
-    setosa_samples = iris_df[iris_df["species"] == "Iris-setosa"].head(5)
-    versicolor_samples = iris_df[iris_df["species"] == "Iris-versicolor"].head(5)
-    virginica_samples = iris_df[iris_df["species"] == "Iris-virginica"].head(5)
-
-    if show_dataset:
-        # Display the dataset
-        st.subheader("Dataset")
-        st.dataframe(iris_df, use_container_width=True, hide_index=True)
-
-    if show_classes:
-        # Iris-setosa Samples
-        st.subheader("Iris-setosa Samples")
-        st.dataframe(setosa_samples, use_container_width=True, hide_index=True)
-
-        # Iris-versicolor Samples
-        st.subheader("Iris-versicolor Samples")
-        st.dataframe(versicolor_samples, use_container_width=True, hide_index=True)
-
-        # Iris-virginica Samples
-        st.subheader("Iris-virginica Samples")
-        st.dataframe(virginica_samples, use_container_width=True, hide_index=True)
-
-    if show_setosa:
-        # Display the Iris-setosa samples
-        st.subheader("Iris-setosa Samples")
-        st.dataframe(setosa_samples, use_container_width=True, hide_index=True)
-
-    if show_versicolor:
-        # Display the Iris-versicolor samples
-        st.subheader("Iris-versicolor Samples")
-        st.dataframe(versicolor_samples, use_container_width=True, hide_index=True)
-
-    if show_virginica:
-        # Display the Iris-virginica samples
-        st.subheader("Iris-virginica Samples")
-        st.dataframe(virginica_samples, use_container_width=True, hide_index=True)
+# Visualizing the results with a line graph
+    plt.figure(figsize=(10, 6))
+    plt.plot(y_test.reset_index(drop=True), label='Actual Birth Rate', color='blue', marker='o')
+    plt.plot(y_pred, label='Predicted Birth Rate', color='orange', marker='x')
+    plt.title('Actual vs Predicted Birth Rate')
+    plt.xlabel('Sample Index')
+    plt.ylabel('Birth Rate')
+    plt.legend()
+    plt.grid()
+    plt.show()
 
 # Conclusions Page
 elif st.session_state.page_selection == "conclusion":
