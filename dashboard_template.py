@@ -306,20 +306,65 @@ elif st.session_state.page_selection == "data_cleaning":
 elif st.session_state.page_selection == "machine_learning":
     st.header("🤖 Machine Learning")
     
-    st.subheader("Linear Regression")
-    st.code("""
-
-   features = ['year', 'birth_total', 'birth_male', 'birth_female', 'birth_rate','birth_gender_ratio', 'population_total','population_male', 'population_female']
-dfnew['birth_rate']
-     
-    """)
+    #so showing the process works    
+    features = dfnew[['year', 'population_total', 'birth_total']]  
+    target = dfnew['birth_rate']  
+    X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
+    model = LinearRegression()
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    mse = mean_squared_error(y_test, y_pred)
+    r2 = r2_score(y_test, y_pred)
+    
+    
+    st.subheader("Linear Regression Model")
     st.markdown("""
-    Linear regression is a type of model which makes use of different variables to predict a specific variable. This variable that we choose to predict must be dependent on these independent variables in order to see how these independent variables ultimately impact the dependent variable.
+    **Linear Regression** is a machine learning model that predicts a continuous dependent variable using one or more independent variables. The goal is to find the best-fitting linear relationship between the variables.
 
-In our case, we chose year, population_total, and birth_total as our independent variables, while birth_rate is our dependent variable, being the variable that we want to predict for this project.
-
-By using linear regression model, we want to see how these three variables play a part in affecting a country's birth rate, in our case it is Japan.")
+    In our case, we used **year**, **population_total**, and **birth_total** as independent variables, while **birth_rate** was our dependent variable, which we aimed to predict. We specifically focused on data for Japan.
     """)
+
+    st.subheader("Training the Linear Regression Model")
+
+    st.code("""
+    features = dfnew[['year', 'population_total', 'birth_total']]  # Independent variables
+    target = dfnew['birth_rate']  # Dependent variable (target for prediction)
+
+    # Split data into training and testing
+    X_train, X_test, y_train, y_test = train_test_split(features, target, test_size=0.2, random_state=42)
+
+    # Initialize
+    model = LinearRegression()
+
+    # Train
+    model.fit(X_train, y_train)
+    """)
+
+    st.subheader("Model Evaluation")
+
+    st.code("""
+    y_pred = model.predict(X_test)
+    mse = mean_squared_error(y_test, y_pred)
+    r2 = r2_score(y_test, y_pred)
+
+    # Metrics
+    print(f'Mean Squared Error (MSE): {mse}')
+    print(f'R-squared (R²): {r2}')
+    """)
+
+    st.write(f"**Mean Squared Error (MSE)**: {mse:.4f}")
+    st.write(f"**R-squared (R²)**: {r2:.4f}")
+
+    st.markdown("""
+    After training our **Linear Regression** model, we evaluated its performance using **Mean Squared Error (MSE)** and **R-squared (R²)**. **MSE** indicates how well our model's predictions match the actual values, while **R²** measures the proportion of variance in the birth rate that can be explained by the model.
+
+    - A **lower MSE** means better performance, it shows smaller error between predicted and actual birth rates.
+    - A **higher R² value** or the closer it is to 1 means that the model explains most of the variability in the birth rate.
+
+    In our case, the model was able to effectively capture the relationship between **year**, **population_total**, and **birth_total** to predict **birth_rate**.
+    """)
+
+    
     
 
 # Prediction Page
