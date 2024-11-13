@@ -188,12 +188,13 @@ elif st.session_state.page_selection == "eda":
     unique_birth_rates = pd.DataFrame(dfnew['birth_rate'].unique(), columns=['Unique Birth Rates'])
 
     num_columns = 5  
-    unique_birth_rates = unique_birth_rates.values.reshape(-1, num_columns)
+    num_rows = (len(unique_birth_rates) + num_columns - 1) // num_columns  
+    padded_values = np.append(unique_birth_rates.values, [np.nan] * (num_rows * num_columns - len(unique_birth_rates)))
 
-    unique_birth_rates_df = pd.DataFrame(unique_birth_rates, columns=[f'Rate {i+1}' for i in range(num_columns)])
+    reshaped_df = pd.DataFrame(padded_values.reshape(num_rows, num_columns), columns=[f'Rate {i+1}' for i in range(num_columns)])
 
     st.write("Unique Birth Rates:")
-    st.table(unique_birth_rates_df)
+    st.table(reshaped_df)
     
     st.markdown("""
     As we have said from earlier, the birth rate of Japan is actually declining from the years. With that said we can 
