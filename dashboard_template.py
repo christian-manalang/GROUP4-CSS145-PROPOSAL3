@@ -206,7 +206,6 @@ elif st.session_state.page_selection == "eda":
 
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_rate'], marker='o', linestyle='-', color='b')
-    plt.title('Birth Rate in Japan (1899 - 2022)')
     plt.xlabel('Year')
     plt.ylabel('Birth Rate')
     plt.grid(True)
@@ -224,7 +223,6 @@ elif st.session_state.page_selection == "eda":
 
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_total'], marker='o', linestyle='-', color='r')
-    plt.title('Total Births in Japan (1899 - 2022)')
     plt.xlabel('Year')
     plt.ylabel('Total Births')
     plt.grid(True)
@@ -242,7 +240,6 @@ elif st.session_state.page_selection == "eda":
 
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_male'], color='blue', marker='o', linestyle='-')
-    plt.title('Total Male Births in Japan (1899 - 2022)')
     plt.xlabel('Year')
     plt.ylabel('Total Male Births')
     plt.grid(True)
@@ -256,7 +253,6 @@ elif st.session_state.page_selection == "eda":
 
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_female'], color='red', marker='o', linestyle='-')
-    plt.title('Total Female Births in Japan (1899 - 2022)')
     plt.xlabel('Year')
     plt.ylabel('Total Female Births')
     plt.grid(True)
@@ -271,7 +267,6 @@ elif st.session_state.page_selection == "eda":
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_male'], label='Male Births', color='blue', marker='o', linestyle='-')
     plt.plot(dfnew['year'], dfnew['birth_female'], label='Female Births', color='red', marker='o', linestyle='-')
-    plt.title('Total Births of Males and Females in Japan (1899 - 2022)')
     plt.xlabel('Year')
     plt.ylabel('Total Births')
     plt.legend()
