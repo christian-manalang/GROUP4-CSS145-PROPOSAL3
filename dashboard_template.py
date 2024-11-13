@@ -391,7 +391,6 @@ elif st.session_state.page_selection == "prediction":
     #visualization through line graph.
     plt.figure(figsize=(10, 6))
     plt.plot(unseen_predictions, label='Predicted Birth Rate', color='green', marker='x')
-    plt.title('Predicted Birth Rate on Unseen Data')
     plt.xlabel('Sample Index')
     plt.ylabel('Predicted Birth Rate')
     plt.legend()
