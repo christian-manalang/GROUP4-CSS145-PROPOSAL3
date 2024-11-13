@@ -332,7 +332,8 @@ By using linear regression model, we want to see how these three variables play 
 elif st.session_state.page_selection == "prediction":
     st.header("👀 Prediction")
 
-    st.subheader("Graph showing the 'Actual vs Predicted Birth Rate'")
+    st.markdown('#### Actual vs Predicted Birth Rate')
+
     features = dfnew[['year', 'population_total', 'birth_total']]  # Add or modify as needed
     target = dfnew['birth_rate']  # Target variable for prediction
 
@@ -356,7 +357,6 @@ elif st.session_state.page_selection == "prediction":
     plt.figure(figsize=(10, 6))
     plt.plot(y_test.reset_index(drop=True), label='Actual Birth Rate', color='blue', marker='o')
     plt.plot(y_pred, label='Predicted Birth Rate', color='orange', marker='x')
-    plt.title('Actual vs Predicted Birth Rate')
     plt.xlabel('Sample Index')
     plt.ylabel('Birth Rate')
     plt.legend()
@@ -369,7 +369,7 @@ elif st.session_state.page_selection == "prediction":
     With that in mind it seems that the model itself works fine and it is the right model to use for this kind of dataset. Though we might still try to use ARIMA but it still remains confusing for most us to use.      
     """)
 
-    st.subheader("Graph showing the 'Predicted Birth Rate on Unseen Data'")
+    st.markdown('#### Predicted Birth Rate on Unseen Data')
 
     # Example unseen data, made randomly in decrements of 10000-50000 starting from year 2022 in the japan_birth.csv
     df_unseen = pd.DataFrame({
@@ -401,9 +401,9 @@ elif st.session_state.page_selection == "prediction":
     st.markdown("""
    So here is a line graph depicting the model's performance when it comes to unseen data, in this case we gathered these different variables from random decrements from the latest data in the dataset which is from 2022, so from there we randomly decremented it each year by around 10000-30000.
 
-Based on our opinions regarding this model is that it is quite accurate, as you can see it is clearly depicting Japan's birth rate, however it is shocking that the predicted birth rate is higher than the actual dataset values.
+    Based on our opinions regarding this model is that it is quite accurate, as you can see it is clearly depicting Japan's birth rate, however it is shocking that the predicted birth rate is higher than the actual dataset values.
 
-We think that this is quite probably because of the fact that there are many other factors to birth rate and that we probably need to add more features but we can still also experiment and see what features may impact the birth rate other than the ones that were mentioned in the main dataset which were birth total and population total. 
+    We think that this is quite probably because of the fact that there are many other factors to birth rate and that we probably need to add more features but we can still also experiment and see what features may impact the birth rate other than the ones that were mentioned in the main dataset which were birth total and population total. 
         """)
 
 # Conclusions Page
