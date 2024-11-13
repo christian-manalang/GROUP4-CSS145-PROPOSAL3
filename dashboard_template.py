@@ -171,9 +171,18 @@ elif st.session_state.page_selection == "eda":
     
     # st.write(dfnew.info())
 
-    buffer = io.StringIO()
-    dfnew.info(buf=buffer)
-    s = buffer.getvalue()
+    # buffer = io.StringIO()
+    # dfnew.info(buf=buffer)
+    # s = buffer.getvalue()
+
+    summary_df = pd.DataFrame({
+        "Column": dfnew.columns,
+        "Data Type": dfnew.dtypes,
+        "Non-Null Count": dfnew.notnull().sum(),
+        "Null Count": dfnew.isnull().sum()
+    })
+
+    st.write(summary_df)
 
     st.write(dfnew.describe())
     st.write("Unique Birth Rates:", dfnew['birth_rate'].unique())
