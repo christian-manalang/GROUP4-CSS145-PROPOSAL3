@@ -317,11 +317,6 @@ elif st.session_state.page_selection == "data_cleaning":
 elif st.session_state.page_selection == "machine_learning":
     st.header("🤖 Machine Learning")
     
-
-# Prediction Page
-elif st.session_state.page_selection == "prediction":
-    st.header("👀 Prediction")
-    
     st.subheader("Linear Regression")
     st.code("""
 
@@ -336,7 +331,11 @@ In our case, we chose year, population_total, and birth_total as our independent
 
 By using linear regression model, we want to see how these three variables play a part in affecting a country's birth rate, in our case it is Japan.")
     """)
+    
 
+# Prediction Page
+elif st.session_state.page_selection == "prediction":
+    st.header("👀 Prediction")
 
     st.subheader("Graph showing the 'Actual vs Predicted Birth Rate'")
     features = dfnew[['year', 'population_total', 'birth_total']]  # Add or modify as needed
