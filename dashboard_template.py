@@ -240,6 +240,10 @@ elif st.session_state.page_selection == "eda":
     plt.ylabel('Total Male Births')
     plt.grid(True)
     st.pyplot(plt)
+
+    st.markdown("""
+    This line graph shows the total birth of males separated from the total number of births.
+    """)
     
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_female'], color='red', marker='o', linestyle='-')
@@ -248,6 +252,10 @@ elif st.session_state.page_selection == "eda":
     plt.ylabel('Total Female Births')
     plt.grid(True)
     st.pyplot(plt)
+    
+    st.markdown("""
+    Likewise, this line graph then shows the total number of births of females separated from the total number of births.
+    """)
     
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_male'], label='Male Births', color='blue', marker='o', linestyle='-')
