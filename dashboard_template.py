@@ -163,7 +163,7 @@ elif st.session_state.page_selection == "dataset":
 elif st.session_state.page_selection == "eda":
     st.header("📈 Exploratory Data Analysis (EDA)")
     col = st.columns((1.5, 4.5, 2), gap='medium')
-    
+
     buffer = io.StringIO()
     dfnew.info(buf=buffer)
     s = buffer.getvalue()
@@ -178,7 +178,7 @@ elif st.session_state.page_selection == "eda":
     st.write(dfnew.describe())
 
     st.markdown("""
-    The results from dfnew.describe show to us the different statistics that can be found within this new dataset that we have cleaned and filled with appropriate data that is missing. Here specifically we see how in each year there is an average of 1,641,856 births every year with a standard deviation of around 439,835 per year which is quite significant but understandable. It is also seen that ever since 1899, the lowest birth total recorded for the dataset was 770,759.
+    The results from `dfnew.describe` show to us the different statistics that can be found within this new dataset that we have cleaned and filled with appropriate data that is missing. Here specifically we see how in each year there is an average of 1,641,856 births every year with a standard deviation of around 439,835 per year which is quite significant but understandable. It is also seen that ever since 1899, the lowest birth total recorded for the dataset was 770,759.
 
     Moving on, we can see how when it comes to birth rate, which is the main point of this project. The minimum value found was 6.3 while 25% was 9.97, 50% at 18.70, 75% at 32.32 and finally the maximum birth rate recorded is 36.20 which is also the latest data from 2022.
 
@@ -201,9 +201,11 @@ elif st.session_state.page_selection == "eda":
     if you want to search about it more.
     """)
     
+    st.header("💡 Insights")
+    st.markdown('#### Birth Rate in Japan (1899 - 2022)')
+
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_rate'], marker='o', linestyle='-', color='b')
-    plt.title('Birth Rate in Japan (1899 - 2022)')
     plt.xlabel('Year')
     plt.ylabel('Birth Rate')
     plt.grid(True)
@@ -217,9 +219,10 @@ elif st.session_state.page_selection == "eda":
     the birth rate suddenly dipped once and there it continously dropped lower and lower to what it is now in present time.
     """)
     
+    st.markdown('#### Total Births in Japan (1899 - 2022)')
+
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_total'], marker='o', linestyle='-', color='r')
-    plt.title('Total Births in Japan (1899 - 2022)')
     plt.xlabel('Year')
     plt.ylabel('Total Births')
     plt.grid(True)
@@ -233,9 +236,10 @@ elif st.session_state.page_selection == "eda":
     of Japan and how they treat relationships and having children in general.
     """)
     
+    st.markdown('#### Total Male Births in Japan (1899 - 2022)')
+
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_male'], color='blue', marker='o', linestyle='-')
-    plt.title('Total Male Births in Japan (1899 - 2022)')
     plt.xlabel('Year')
     plt.ylabel('Total Male Births')
     plt.grid(True)
@@ -245,9 +249,10 @@ elif st.session_state.page_selection == "eda":
     This line graph shows the total birth of males separated from the total number of births.
     """)
     
+    st.markdown('#### Total Female Births in Japan (1899 - 2022)')
+
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_female'], color='red', marker='o', linestyle='-')
-    plt.title('Total Female Births in Japan (1899 - 2022)')
     plt.xlabel('Year')
     plt.ylabel('Total Female Births')
     plt.grid(True)
@@ -257,10 +262,11 @@ elif st.session_state.page_selection == "eda":
     Likewise, this line graph then shows the total number of births of females separated from the total number of births.
     """)
     
+    st.markdown('#### Total Births of Males and Females in Japan (1899 - 2022)')
+
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_male'], label='Male Births', color='blue', marker='o', linestyle='-')
     plt.plot(dfnew['year'], dfnew['birth_female'], label='Female Births', color='red', marker='o', linestyle='-')
-    plt.title('Total Births of Males and Females in Japan (1899 - 2022)')
     plt.xlabel('Year')
     plt.ylabel('Total Births')
     plt.legend()
@@ -371,7 +377,8 @@ elif st.session_state.page_selection == "machine_learning":
 elif st.session_state.page_selection == "prediction":
     st.header("👀 Prediction")
 
-    st.subheader("Graph showing the 'Actual vs Predicted Birth Rate'")
+    st.markdown('#### Actual vs Predicted Birth Rate')
+
     features = dfnew[['year', 'population_total', 'birth_total']]  # Add or modify as needed
     target = dfnew['birth_rate']  # Target variable for prediction
 
@@ -395,7 +402,6 @@ elif st.session_state.page_selection == "prediction":
     plt.figure(figsize=(10, 6))
     plt.plot(y_test.reset_index(drop=True), label='Actual Birth Rate', color='blue', marker='o')
     plt.plot(y_pred, label='Predicted Birth Rate', color='orange', marker='x')
-    plt.title('Actual vs Predicted Birth Rate')
     plt.xlabel('Sample Index')
     plt.ylabel('Birth Rate')
     plt.legend()
@@ -408,7 +414,7 @@ elif st.session_state.page_selection == "prediction":
     With that in mind it seems that the model itself works fine and it is the right model to use for this kind of dataset. Though we might still try to use ARIMA but it still remains confusing for most us to use.      
     """)
 
-    st.subheader("Graph showing the 'Predicted Birth Rate on Unseen Data'")
+    st.markdown('#### Predicted Birth Rate on Unseen Data')
 
     # Example unseen data, made randomly in decrements of 10000-50000 starting from year 2022 in the japan_birth.csv
     df_unseen = pd.DataFrame({
@@ -430,7 +436,6 @@ elif st.session_state.page_selection == "prediction":
     #visualization through line graph.
     plt.figure(figsize=(10, 6))
     plt.plot(unseen_predictions, label='Predicted Birth Rate', color='green', marker='x')
-    plt.title('Predicted Birth Rate on Unseen Data')
     plt.xlabel('Sample Index')
     plt.ylabel('Predicted Birth Rate')
     plt.legend()
@@ -440,9 +445,9 @@ elif st.session_state.page_selection == "prediction":
     st.markdown("""
    So here is a line graph depicting the model's performance when it comes to unseen data, in this case we gathered these different variables from random decrements from the latest data in the dataset which is from 2022, so from there we randomly decremented it each year by around 10000-30000.
 
-Based on our opinions regarding this model is that it is quite accurate, as you can see it is clearly depicting Japan's birth rate, however it is shocking that the predicted birth rate is higher than the actual dataset values.
+    Based on our opinions regarding this model is that it is quite accurate, as you can see it is clearly depicting Japan's birth rate, however it is shocking that the predicted birth rate is higher than the actual dataset values.
 
-We think that this is quite probably because of the fact that there are many other factors to birth rate and that we probably need to add more features but we can still also experiment and see what features may impact the birth rate other than the ones that were mentioned in the main dataset which were birth total and population total. 
+    We think that this is quite probably because of the fact that there are many other factors to birth rate and that we probably need to add more features but we can still also experiment and see what features may impact the birth rate other than the ones that were mentioned in the main dataset which were birth total and population total. 
         """)
 
 # Conclusions Page
