@@ -185,7 +185,10 @@ elif st.session_state.page_selection == "eda":
     We can see initially that the birth rate of Japan from the 25th, 50th, and 75th percentiles were gradually increasing, but now we hear from the news how their birth rate is sharply decreasing as each year passes by, based on this we can probably conclude that the minimum value is actually Japan's current birth rate as based on graphs later, we would see how things took a turn for the worse it Japan's birth rate.
     """)
 
-    st.write("Unique Birth Rates:", dfnew['birth_rate'].unique())
+    unique_birth_rates = pd.DataFrame(dfnew['birth_rate'].unique(), columns=['Unique Birth Rates'])
+
+    st.write("Unique Birth Rates:")
+    st.dataframe(unique_birth_rates)
     
     st.markdown("""
     As we have said from earlier, the birth rate of Japan is actually declining from the years. With that said we can 
