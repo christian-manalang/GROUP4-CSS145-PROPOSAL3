@@ -163,7 +163,7 @@ elif st.session_state.page_selection == "dataset":
 elif st.session_state.page_selection == "eda":
     st.header("📈 Exploratory Data Analysis (EDA)")
     col = st.columns((1.5, 4.5, 2), gap='medium')
-    
+
     buffer = io.StringIO()
     dfnew.info(buf=buffer)
     s = buffer.getvalue()
@@ -201,6 +201,9 @@ elif st.session_state.page_selection == "eda":
     if you want to search about it more.
     """)
     
+    st.header("💡 Insights")
+    st.markdown('#### Birth Rate in Japan (1899 - 2022)')
+
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_rate'], marker='o', linestyle='-', color='b')
     plt.title('Birth Rate in Japan (1899 - 2022)')
@@ -217,6 +220,8 @@ elif st.session_state.page_selection == "eda":
     the birth rate suddenly dipped once and there it continously dropped lower and lower to what it is now in present time.
     """)
     
+    st.markdown('#### Total Births in Japan (1899 - 2022)')
+
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_total'], marker='o', linestyle='-', color='r')
     plt.title('Total Births in Japan (1899 - 2022)')
@@ -233,6 +238,8 @@ elif st.session_state.page_selection == "eda":
     of Japan and how they treat relationships and having children in general.
     """)
     
+    st.markdown('#### Total Male Births in Japan (1899 - 2022)')
+
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_male'], color='blue', marker='o', linestyle='-')
     plt.title('Total Male Births in Japan (1899 - 2022)')
@@ -245,6 +252,8 @@ elif st.session_state.page_selection == "eda":
     This line graph shows the total birth of males separated from the total number of births.
     """)
     
+    st.markdown('#### Total Female Births in Japan (1899 - 2022)')
+
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_female'], color='red', marker='o', linestyle='-')
     plt.title('Total Female Births in Japan (1899 - 2022)')
@@ -257,6 +266,8 @@ elif st.session_state.page_selection == "eda":
     Likewise, this line graph then shows the total number of births of females separated from the total number of births.
     """)
     
+    st.markdown('#### Total Births of Males and Females in Japan (1899 - 2022)')
+
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_male'], label='Male Births', color='blue', marker='o', linestyle='-')
     plt.plot(dfnew['year'], dfnew['birth_female'], label='Female Births', color='red', marker='o', linestyle='-')
