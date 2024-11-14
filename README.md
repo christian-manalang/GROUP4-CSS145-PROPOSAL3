@@ -1,51 +1,66 @@
-# Iris Classification Dashboard using Streamlit
+# Japan Birth Rate Dashboard using Streamlit
 
-A Streamlit web application that performs **Exploratory Data Analysis (EDA)**, **Data Preprocessing**, and **Supervised Machine Learning** to classify Iris species from the Iris dataset (Setosa, Versicolor, and Virginica) using **Decision Tree Classifier** and **Random Forest Regressor**.
+A data-driven web application to analyze and predict Japan's birth rate trends using historical data from 1899 to 2022. This project applies **Exploratory Data Analysis (EDA)**, **Time Series Forecasting**, and **Linear Regression Modeling** to identify key factors influencing birth rates and project future rates over the next five years.
 
-![Main Page Screenshot](screenshots/IrisClassificationDashboard.webp)
+![Main Page Screenshot](screenshots/newscreen.png)
+
+### Group Members
+
+## Dominic Ryan C. Gonzales
+
+- **ID**: 2023180061
+- **GitHub**: [ryang1006](https://github.com/ryang1006)
+
+<br>
+
+## Jorge Christian B. Manalang
+
+- **ID**: 2023104718
+- **GitHub**: [christian-manalang](https://github.com/christian-manalang)
+
+<br>
+
+## Kirk Adrian E. Sunico
+
+- **ID**: 2023107221
+- **GitHub**: [kirkadrian](https://github.com/kirkadrian)
+
+<br>
+
+## Charles Matthew L. Dela Cruz
+
+- **ID**: 2023104218
+- **GitHub**: [charles-delacruz](https://github.com/charles-delacruz)
+
+<br>
+
+## Liandro E. Refulle
+
+- **ID**: 2023109170
+- **GitHub**: [liandrorefulle](https://github.com/liandrorefulle)
 
 ### 🔗 Links:
 
-- 🌐 [Streamlit Link](https://zeraphim-iris-classification-dashboard.streamlit.app/)
-- 📗 [Google Colab Notebook](https://colab.research.google.com/drive/1KJDBrx3akSPUW42Kbeepj64ZisHFD-NV?usp=sharing)
+- 🌐 [Streamlit Link](https://group4-css145-proposal3-hzvkwntqtmldcgqtg2bgxt.streamlit.app/)
+- 📗 [Google Colab Notebook](https://colab.research.google.com/drive/1i7ifs7KNyGwueQwB-WqFf-4zKZrXHKAE?usp=sharing)
 
 ### 📊 Dataset:
 
-- [Iris Flower Dataset (Kaggle)](https://www.kaggle.com/datasets/arshid/iris-flower-dataset)
+- [Japan Birth Statistics on Kaggle](https://www.kaggle.com/datasets/webdevbadger/japan-birth-statistics)
 
 ### 📖 Pages:
 
-1. `Dataset` - Brief description of the Iris Flower dataset used in this dashboard.
-2. `EDA` - Exploratory Data Analysis of the Iris Flower dataset. Highlighting the distribution of Iris species and the relationship between the features. Includes graphs such as Pie Chart, Scatter Plots, and Pairwise Scatter Plot Matrix.
-3. `Data Cleaning / Pre-processing` - Data cleaning and pre-processing steps such as encoding the species column and splitting the dataset into training and testing sets.
-4. `Machine Learning` - Training two supervised classification models: Decision Tree Classifier and Random Forest Regressor. Includes model evaluation, feature importance, and tree plot.
-5. `Prediction` - Prediction page where users can input values to predict the Iris species using the trained models.
-6. `Conclusion` - Summary of the insights and observations from the EDA and model training.
+1. `Dataset` - Overview of Japan's birth statistics, including birth rates, parent ages, gender ratios, and factors like historical and calamity impacts on birth trends.
+2. `EDA` - Exploratory analysis on birth rate fluctuations and demographic patterns over the years, with visualizations highlighting correlations between key factors.
+3. `Data Cleaning / Pre-processing` - Cleaning and transforming historical data for accurate modeling, handling missing values, and selecting relevant columns.
+4. `Machine Learning` - Applied Linear Regression to predict birth rates based on factors like year, total population, and total births. The model provides insights into how these variables impact birth rate over time.
+5. `Prediction` - Interactive prediction feature to estimate Japan's future birth rate, providing insights based on historical patterns and influential factors.
+6. `Conclusion` - Summarized insights on Japan's birth trends, key factors, and model performance in predicting future rates.
 
 ### 💡 Findings / Insights
 
-Through exploratory data analysis and training of two classification models (`Decision Tree Classifier` and `Random Forest Regressor`) on the **Iris Flower dataset**, the key insights and observations are:
-
-#### 1. 📊 **Dataset Characteristics**:
-
-- The dataset shows moderate variation across the **sepal and petal** features. `petal_length` and `petal_width` has higher variability than the sepal features further suggesting that these features are more likely to distinguish between the three Iris flower species.
-- All of the three Iris species have a **balanced class distribution** which further eliminates the need to rebalance the dataset.
-
-#### 2. 📝 **Feature Distributions and Separability**:
-
-- **Pairwise Scatter Plot** analysis indicates that `Iris Setosa` forms a distinct cluster based on petal features which makes it easily distinguishable from `Iris Versicolor` and `Iris Virginica`.
-- **Petal Length** emerged as the most discriminative feature especially for distinguishing `Iris Setosa` from other Iris species.
-
-#### 3. 📈 **Model Performance (Decision Tree Classifier)**:
-
-- The `Decision Tree Classifier` achieved 100% accuracy on the training data which suggests that using a relatively simple and structured dataset resulted in a strong performance for this model. However, this could also imply potential **overfitting** due to the model's high sensitivity to the specific training samples.
-- In terms of **feature importance** results from the _Decision Tree Model_, `petal_length` was the dominant predictor having **89%** importance value which is then followed by `petal_width` with **8.7%**.
-
-#### 4. 📈 **Model Performance (Random Forest Regressor)**:
-
-- The **Random Forest Regressor** achieved an accuracy of 98.58% on training and 99.82% on testing which is slightly lower compared to the performance of the _Decision Tree Classifier Model_
-- **Feature importance** analysis also highlighted `petal_length` as the primary predictor having **58%** importance value followed by `petal_width` with **39%**.
+Through exploratory data analysis and training of a classification model (`Linear Regression Modelling`) on the **Japan Birth Statistics Dataset**, the key insights and observations are:
 
 ##### **Summing up:**
 
-Throughout this data science activity, it is evident that the Iris dataset is a good dataset to use for classification despite of its simplicity. Due to its balanced distribution of 3 Iris flower species and having 0 null values, further data cleansing techniques were not used. 2 of the classifier models trained were able to leverage the features that can be found in the dataset which resulted to a high accuracy in terms of the two models' predictions. Despite of the slight overlap between Iris Versicolor and Iris Virginica, the two models trained were able to achieve high accuracy and was able to learn patterns from the dataset.
+A
