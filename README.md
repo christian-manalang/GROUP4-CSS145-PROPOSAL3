@@ -6,38 +6,40 @@ A data-driven web application to analyze and predict Japan's birth rate trends u
 
 ### Group Members
 
-## Dominic Ryan C. Gonzales
+### Dominic Ryan C. Gonzales
 
 - **ID**: 2023180061
 - **GitHub**: [ryang1006](https://github.com/ryang1006)
 
 <br>
 
-## Jorge Christian B. Manalang
+### Jorge Christian B. Manalang
 
 - **ID**: 2023104718
 - **GitHub**: [christian-manalang](https://github.com/christian-manalang)
 
 <br>
 
-## Kirk Adrian E. Sunico
+### Kirk Adrian E. Sunico
 
 - **ID**: 2023107221
 - **GitHub**: [kirkadrian](https://github.com/kirkadrian)
 
 <br>
 
-## Charles Matthew L. Dela Cruz
+### Charles Matthew L. Dela Cruz
 
 - **ID**: 2023104218
 - **GitHub**: [charles-delacruz](https://github.com/charles-delacruz)
 
 <br>
 
-## Liandro E. Refulle
+### Liandro E. Refulle
 
 - **ID**: 2023109170
 - **GitHub**: [liandrorefulle](https://github.com/liandrorefulle)
+
+<br>
 
 ### 🔗 Links:
 
