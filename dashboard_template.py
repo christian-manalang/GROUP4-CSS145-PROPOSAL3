@@ -176,7 +176,7 @@ elif st.session_state.page_selection == "eda":
     We can see initially that the birth rate of Japan from the 25th, 50th, and 75th percentiles were gradually increasing, but now we hear from the news how their birth rate is sharply decreasing as each year passes by, based on this we can probably conclude that the minimum value is actually Japan's current birth rate as based on graphs later, we would see how things took a turn for the worse it Japan's birth rate.
     """)
 
-    st.write("Unique Birth Rates:", dfnew['birth_rate'].unique())
+    st.write("#### **Unique Birth Rates:**", dfnew['birth_rate'].unique())
     
     st.markdown("""
     As we have said from earlier, the birth rate of Japan is actually declining from the years. With that said we can 
@@ -193,7 +193,7 @@ elif st.session_state.page_selection == "eda":
     """)
     
     st.header("💡 Insights")
-    st.markdown('#### Birth Rate in Japan (1899 - 2022)')
+    st.markdown('#### **Birth Rate in Japan (1899 - 2022)**')
 
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_rate'], marker='o', linestyle='-', color='b')
@@ -210,7 +210,7 @@ elif st.session_state.page_selection == "eda":
     the birth rate suddenly dipped once and there it continously dropped lower and lower to what it is now in present time.
     """)
     
-    st.markdown('#### Total Births in Japan (1899 - 2022)')
+    st.markdown('#### **Total Births in Japan (1899 - 2022)**')
 
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_total'], marker='o', linestyle='-', color='r')
@@ -227,7 +227,7 @@ elif st.session_state.page_selection == "eda":
     of Japan and how they treat relationships and having children in general.
     """)
     
-    st.markdown('#### Total Male Births in Japan (1899 - 2022)')
+    st.markdown('#### **Total Male Births in Japan (1899 - 2022)**')
 
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_male'], color='blue', marker='o', linestyle='-')
@@ -240,7 +240,7 @@ elif st.session_state.page_selection == "eda":
     This line graph shows the total birth of males separated from the total number of births.
     """)
     
-    st.markdown('#### Total Female Births in Japan (1899 - 2022)')
+    st.markdown('#### **Total Female Births in Japan (1899 - 2022)**')
 
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_female'], color='red', marker='o', linestyle='-')
@@ -253,7 +253,7 @@ elif st.session_state.page_selection == "eda":
     Likewise, this line graph then shows the total number of births of females separated from the total number of births.
     """)
     
-    st.markdown('#### Total Births of Males and Females in Japan (1899 - 2022)')
+    st.markdown('#### **Total Births of Males and Females in Japan (1899 - 2022)**')
 
     plt.figure(figsize=(12, 6))
     plt.plot(dfnew['year'], dfnew['birth_male'], label='Male Births', color='blue', marker='o', linestyle='-')
@@ -368,7 +368,7 @@ elif st.session_state.page_selection == "machine_learning":
 elif st.session_state.page_selection == "prediction":
     st.header("👀 Prediction")
 
-    st.markdown('#### Actual vs Predicted Birth Rate')
+    st.markdown('#### **Actual vs Predicted Birth Rate**')
 
     features = dfnew[['year', 'population_total', 'birth_total']]  # Add or modify as needed
     target = dfnew['birth_rate']  # Target variable for prediction
@@ -405,7 +405,7 @@ elif st.session_state.page_selection == "prediction":
     With that in mind it seems that the model itself works fine and it is the right model to use for this kind of dataset. Though we might still try to use ARIMA but it still remains confusing for most us to use.      
     """)
 
-    st.markdown('#### Predicted Birth Rate on Unseen Data')
+    st.markdown('#### **Predicted Birth Rate on Unseen Data**')
 
     # Example unseen data, made randomly in decrements of 10000-50000 starting from year 2022 in the japan_birth.csv
     df_unseen = pd.DataFrame({
@@ -448,37 +448,36 @@ elif st.session_state.page_selection == "conclusion":
     st.markdown("""
     Through exploratory data analysis and training of a classification model (`Linear Regression Modelling`) on the **Japan Birth Statistics Dataset**, the key insights and observations are:
 
-    #### 1. 📊 Dataset Overview:
+    #### 1. 📊 **Dataset Overview**:
 
     - The dataset, spanning from 1899 to 2022, provides an extensive look into Japan's birth rates and demographics, including variables such as population size and birth totals. However, historical events like World War II resulted in some missing years, though these gaps were addressed during data cleaning.
 
     - Statistical analysis of the dataset shows a historical average of 1,641,856 births per year with notable fluctuations, especially due to cultural and external factors influencing birth rates in different decades.
 
-    #### 2. 📉 Exploratory Data Analysis (EDA):
+    #### 2. 📉 **Exploratory Data Analysis (EDA)**:
 
     - The EDA highlighted Japan’s decreasing birth rate over time, with a gradual increase until the 1980s, followed by a steep decline. Various historical and cultural events, such as World Wars and superstitions (e.g., the Hinoe-Uma superstition in 1966), contributed to birth rate dips.
 
     - Birth totals, separated by gender, showed that male births were consistently higher than female births, a trend aligned with biological norms observed globally.
 
-    #### 3. 📈 Model Training and Prediction (Linear Regression):
+    #### 3. 📈 **Model Training and Prediction (Linear Regression)**:
 
     - We trained a Linear Regression model using year, population total, and birth total as independent variables to predict the birth rate.
     Model performance metrics included Mean Squared Error (MSE) and R-squared (R²). The model achieved an MSE of 1.1731 and an R² of 0.9899, indicating a strong fit and high predictive accuracy for Japan’s birth rate based on historical data.
 
-    #### 4. 🔍 Model Insights and Interpretation:
+    #### 4. 🔍 **Model Insights and Interpretation**:
 
     - The high R² value suggests that the linear model effectively captures trends and variability in Japan’s birth rate using selected features. However, the model's slight overestimation on test data implies there may be additional factors impacting birth rates, such as economic conditions and cultural shifts, not included in the current dataset.
 
     - Visualizations of the actual versus predicted birth rates affirmed the model’s alignment with historical trends, although further improvements could include adding more nuanced demographic or economic indicators.
 
-    #### 5. 📊 Predictive Outlook and Future Considerations:
+    #### 5. 📊 **Predictive Outlook and Future Considerations**:
 
     - Projections based on this model suggest a continued decline in Japan's birth rate. This aligns with current demographic trends reported globally, where many developed nations are experiencing declining birth rates.
 
     - Future studies might enhance predictive accuracy by incorporating additional data points, such as economic conditions, government policies, and social factors, to further understand the declining birth rate and potentially identify policy interventions.
 
-    ##### **Summing up:**
+    ##### **Summing up**:
 
     Through our analysis of Japan's birth rate dataset and linear regression modeling, we identified significant historical trends and developed a model that provides high accuracy in predicting future birth rates. The insights derived from this study underscore the complexity of birth rate dynamics and highlight the importance of combining demographic, economic, and cultural factors for more comprehensive forecasting.
     """)
-    # Your content for the CONCLUSION page goes here
